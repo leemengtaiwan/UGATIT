@@ -4,6 +4,8 @@ from glob import glob
 import time
 from tensorflow.contrib.data import prefetch_to_device, shuffle_and_repeat, map_and_batch
 import numpy as np
+import pysnooper
+
 
 class UGATIT(object) :
     def __init__(self, sess, args):
@@ -611,6 +613,7 @@ class UGATIT(object) :
             print(" [*] Failed to find a checkpoint")
             return False, 0
 
+    @pysnooper.snoop()
     def test(self):
         tf.global_variables_initializer().run()
         test_A_files = glob('./dataset/{}/*.*'.format(self.dataset_name + '/testA'))

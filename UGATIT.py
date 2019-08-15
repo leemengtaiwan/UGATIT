@@ -598,6 +598,7 @@ class UGATIT(object) :
 
         self.saver.save(self.sess, os.path.join(checkpoint_dir, self.model_name + '.model'), global_step=step)
 
+    @pysnooper.snoop()
     def load(self, checkpoint_dir):
         print(" [*] Reading checkpoints...")
         checkpoint_dir = os.path.join(checkpoint_dir, self.model_dir)
